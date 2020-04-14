@@ -1,0 +1,47 @@
+Kaique Eduardo Araujo e Marcelo Ito
+
+
+DICIONARIO TÉCNICO GITHUB  -  ENTREGA PARCIAL
+
+
+Lista de 10 comandos que serão pesquisados futuramente.
+
+
+1.Criar novo repositório
+git init
+
+2. Verificar estado dos arquivos/diretórios
+git status
+
+3. Adicionar arquivo/diretório (staged area)
+Adicionar um arquivo em específico
+git add meu_arquivo.txt
+
+4. Adicionar um diretório em específico
+git add meu_diretorio
+
+5.Comitar arquivo/diretório
+Comitar um arquivo
+git commit meu_arquivo.txt
+
+6.Comitar vários arquivos
+git commit meu_arquivo.txt meu_outro_arquivo.txt
+
+7.Comitar informando mensagem
+git commit meuarquivo.txt -m "minha mensagem de commit"
+
+8. Remover arquivo/diretório
+Remover arquivo
+git rm meu_arquivo.txt
+
+9. Remover diretório
+git rm -r diretorio
+
+10. Visualizar histórico
+Exibir histórico
+git log
+
+
+LINKS REPOSITÓRIOS:
+Kaique Eduardo B. Araujo - https://github.com/kaiqw/Aula_mobile.git
+Marcelo Ito - https://github.com/GremlinX/Dicion-rioT-cnico.git
