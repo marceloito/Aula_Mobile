@@ -20,9 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        criarBDConsulta();
-        criarBDMedico();
-        criarBDPaciente();
+        criarBD();
 
         Button clickAdicionarMedico = findViewById(R.id.btnAdicionarMedico);
         Button clickAdicionarConsulta = findViewById(R.id.btnAdicionarConsulta);
@@ -54,22 +52,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(addP);
             }
         });
-
-        /*Button clickListar = findViewById(R.id.btnListar);
-        clickListar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent listC = new Intent(getApplicationContext(), ListarConsulta.class);
-                Intent listM = new Intent(getApplicationContext(), ListarMedico.class);
-                Intent listP = new Intent(getApplicationContext(), ListarPaciente.class);
-                startActivity(listC);
-                startActivity(listM);
-                startActivity(listP);
-            }
-        });*/
     }
 
-    private void criarBDMedico () {
+    private void criarBD() {
         db = openOrCreateDatabase("medicos.db", Context.MODE_PRIVATE, null);
         StringBuilder sql = new StringBuilder();
         sql.append("CREATE TABLE IF NOT EXISTS medico (");
@@ -83,17 +68,7 @@ public class MainActivity extends AppCompatActivity {
         sql.append("celular VARCHAR(20), ");
         sql.append("fixo VARCHAR(20)");
         sql.append(");");
-        try {
-            db.execSQL(sql.toString());
-        } catch (SQLException e) {
-            Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-        }
-        db.close();
-    }
 
-    private void criarBDPaciente () {
-        db = openOrCreateDatabase("paciente.db", Context.MODE_PRIVATE, null);
-        StringBuilder sql = new StringBuilder();
         sql.append("CREATE TABLE IF NOT EXISTS paciente (");
         sql.append("_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ");
         sql.append("nome VARCHAR(50), ");
@@ -105,17 +80,7 @@ public class MainActivity extends AppCompatActivity {
         sql.append("celular VARCHAR(20), ");
         sql.append("fixo VARCHAR(20)");
         sql.append(");");
-        try {
-            db.execSQL(sql.toString());
-        } catch (SQLException e) {
-            Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-        }
-        db.close();
-    }
 
-    private void criarBDConsulta () {
-        db = openOrCreateDatabase("consulta.db", Context.MODE_PRIVATE, null);
-        StringBuilder sql = new StringBuilder();
         sql.append("CREATE TABLE IF NOT EXISTS paciente (");
         sql.append("_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ");
         sql.append("paciente_id INTEGER NOT NULL, ");
@@ -126,12 +91,14 @@ public class MainActivity extends AppCompatActivity {
         sql.append("FOREIGN KEY(paciente_id) REFERENCES paciente(id), ");
         sql.append("FOREIGN KEY(medico_id) REFERENCES medico(id)");
         sql.append(");");
+
         try {
             db.execSQL(sql.toString());
         } catch (SQLException e) {
             Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
         db.close();
+
     }
 }
 

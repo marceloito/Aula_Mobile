@@ -1,6 +1,132 @@
 package com.example.trabalho04;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-class AdicionarPaciente extends AppCompatActivity {
+public class AdicionarPaciente extends AppCompatActivity {
+    SQLiteDatabase db;
+    EditText etNome;
+    Spinner spGpSangue;
+    EditText etLogradouro;
+    EditText etNumero;
+    EditText etCidade;
+    Spinner spUf;
+    EditText etCelular;
+    EditText etFixo;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_adicionar_paciente); // PORQUE RAIOS NÃO DÁ CERTO ???????
+
+        etNome = findViewById(R.id.etNomePaciente);
+        spGpSangue = findViewById(R.id.spTipoSangue);
+        etLogradouro = findViewById(R.id.etLogradouroPac);
+        etNumero = findViewById(R.id.etNumeroPac);
+        etCidade = findViewById(R.id.etCidadePac);
+        spUf = findViewById(R.id.spUfPac);
+        etCelular = findViewById(R.id.etCelularPac);
+        etFixo = findViewById(R.id.etFixoPac);
+
+        String[] opGrupoSang = new String[]{
+                "Selecione tipo sanguineo: ",
+                "A+", "A-", "AB+", "AB-",
+                "B+", "B-", "O+", "O-"
+
+        };
+        ArrayAdapter<String> gpGSangArrayAdap =
+                new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, opGrupoSang);
+        spGpSangue.setAdapter(gpGSangArrayAdap);
+
+        String[] spUFpac = new String[]{
+                "SELECIONE: ",
+                "AC", "AL", "AM", "AP", "BA",
+                "CE", "DF", "ES", "GO", "MA",
+                "MG", "MS", "MT", "PA", "PB",
+                "PE", "PI", "PR", "RJ", "RN",
+                "RO", "RR", "RS", "SC", "SE",
+                "SP", "TO"
+        };
+        ArrayAdapter<String> spArrayAdapUFpac =
+                new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, spUFpac);
+        spUf.setAdapter(spArrayAdapUFpac);
+
+        Button btnSalvarPaciente = findViewById(R.id.btnSalvarPac);
+        btnSalvarPaciente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                salvarBD();
+            }
+        });
+    }
+
+    private void salvarBD(){
+        String nome = etNome.getText().toString().trim();
+        String gpSangue = spGpSangue.getSelectedItem().toString();
+        String logradouro = etLogradouro.getText().toString().trim();
+        String numero = etNumero.getText().toString().trim();
+        String cidade = etCidade.getText().toString().trim();
+        String uf = spUf.getSelectedItem().toString();
+        String celular = etCelular.getText().toString().trim();
+        String fixo = etFixo.getText().toString().trim();
+
+        if(nome.equals("")){
+            Toast.makeText(getApplicationContext(), "Por favor, informe o Nome!", Toast.LENGTH_LONG).show();
+        }else if (gpSangue.equals("- Escolha uma opção -")){
+            Toast.makeText(getApplicationContext(), "Por favor, Selecione o Grupo Sanguíneo!", Toast.LENGTH_LONG).show();
+        }else if (logradouro.equals("")){
+            Toast.makeText(getApplicationContext(), "Por favor, Informe o Logradouro!", Toast.LENGTH_LONG).show();
+        }else if (numero.equals("")){
+            Toast.makeText(getApplicationContext(), "Por favor, Informe o Número!", Toast.LENGTH_LONG).show();
+        }else if (cidade.equals("")){
+            Toast.makeText(getApplicationContext(), "Por favor, Informe a Cidade!", Toast.LENGTH_LONG).show();
+        }else if (uf.equals("- SELECIONE -")){
+            Toast.makeText(getApplicationContext(), "Por favor, Selecione a UF!", Toast.LENGTH_LONG).show();
+        }else if (celular.equals("")) {
+            Toast.makeText(getApplicationContext(), "Por favor, Informe o Celular!", Toast.LENGTH_LONG).show();
+        }else if (fixo.equals("")) {
+            Toast.makeText(getApplicationContext(), "Por favor, Informe o Telefone Fixo!", Toast.LENGTH_LONG).show();
+        }else{
+            db = openOrCreateDatabase("consulta.db", Context.MODE_PRIVATE, null);
+            StringBuilder sql = new StringBuilder();
+
+            sql.append("INSERT INTO paciente(nome, grp_sanguineo, logradouro, numero, cidade, uf, celular, fixo) VALUES(");
+            sql.append(" ' " + nome +" ' ," );
+            sql.append(" ' " + gpSangue +" ' ," );
+            sql.append(" ' " + logradouro +" ' ," );
+            sql.append(" ' " + numero +" ' ," );
+            sql.append(" ' " + cidade +" ' ," );
+            sql.append(" ' " + uf +" ' ," );
+            sql.append(celular +" , " );
+            sql.append(fixo);
+            sql.append(");");
+            try {
+                db.execSQL(sql.toString());
+                Toast.makeText(getApplicationContext(), "Paciente inserido com sucesso!", Toast.LENGTH_LONG).show();
+            }catch (SQLException e) {
+                Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+            etNome.setText("");
+            spGpSangue.setSelection(0);
+            etLogradouro.setText("");
+            etNumero.setText("");
+            etCidade.setText("");
+            spUf.setSelection(0);
+            etCelular.setText("");
+            etFixo.setText("");
+            db.close();
+        }
+
+
+    }
+
 }

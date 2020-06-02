@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AdicionarPaciente">
+
+    <TextView
+        android:id="@+id/tvAdcPaciente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:layout_marginStart="20dp"
+        android:text="Adicionar Paciente"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:id="@+id/tvObrigatorio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/campos_obrigatorios"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:id="@+id/tvNomePaciente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="15dp"
+        android:layout_marginStart="10dp"
+        android:text="@string/nome"
+        android:layout_marginLeft="10dp" />
+
+    <EditText
+        android:id="@+id/etNomePaciente"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:ems="10"
+        android:textSize="15dp"
+        android:inputType="textPersonName"
+        android:layout_marginStart="10dp"
+        android:text=""
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:id="@+id/tvTipoSangue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:layout_marginStart="10dp"
+        android:text="Tipo Sanguineo"
+        android:layout_marginLeft="10dp" />
+
+    <Spinner
+        android:id="@+id/spTipoSangue"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <TextView
+        android:id="@+id/tvLogradouroPac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:layout_marginStart="10dp"
+        android:text="Logradouro"
+        android:layout_marginLeft="10dp" />
+
+    <EditText
+        android:id="@+id/etLogradouroPac"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:textSize="15dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginStart="10dp"
+        android:text=""
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:id="@+id/tvNumeroPac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:layout_marginStart="10dp"
+        android:text="Numero"
+        android:layout_marginLeft="10dp" />
+
+    <EditText
+        android:id="@+id/etNumeroPac"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:textSize="15dp"
+        android:ems="10"
+        android:layout_marginStart="10dp"
+        android:inputType="number"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:id="@+id/tvCidadePac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:layout_marginStart="10dp"
+        android:text="Cidade"
+        android:layout_marginLeft="10dp" />
+
+    <EditText
+        android:id="@+id/etCidadePac"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:textSize="15dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginStart="10dp"
+        android:text=""
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:id="@+id/tvUfPac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:layout_marginStart="10dp"
+        android:text="UF"
+        android:layout_marginLeft="10dp" />
+
+    <Spinner
+        android:id="@+id/spUfPac"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"/>
+
+
+    <TextView
+        android:id="@+id/tvCelularPac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:layout_marginStart="10dp"
+        android:text="Celular"
+        android:layout_marginLeft="10dp" />
+
+    <EditText
+        android:id="@+id/etCelularPac"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:textSize="15dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginStart="10dp"
+        android:text=""
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:id="@+id/tvFixoPac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:layout_marginStart="10dp"
+        android:text="Fixo"
+        android:layout_marginLeft="10dp" />
+
+    <EditText
+        android:id="@+id/etFixoPac"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:textSize="15dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginStart="10dp"
+        android:text=""
+        android:layout_marginLeft="10dp" />
+
+    <Button
+        android:id="@+id/btnSalvarPac"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="Salvar" />
+
+</LinearLayout>
