@@ -1,6 +1,8 @@
 package com.example.univaliprestacaoservico;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +17,9 @@ public class PrestServicoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prest_servico);
         intent = getIntent();
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         Button botaoVoltar = findViewById(R.id.botaoVoltar);
         botaoVoltar.setOnClickListener(new View.OnClickListener() {
